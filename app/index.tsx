@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import {
   BuyButton,
   ExchangeCard,
@@ -10,7 +10,7 @@ import {
 
 export default function Index() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header title="Exchange" />
 
       <ExchangeCard
@@ -42,7 +42,7 @@ export default function Index() {
           { title: 'Gas fee', value: '0.0045 ETH' },
         ]}
       />
-    </View>
+    </ScrollView>
   );
 }
 
