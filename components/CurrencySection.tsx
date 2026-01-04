@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 type CurrencySectionProps = {
   currencyIcon: ImageSourcePropType;
@@ -7,6 +7,7 @@ type CurrencySectionProps = {
   amount: string;
   balanceLabel?: string;
   balanceAmount?: string;
+  onCurrencyPress?: () => void;
 };
 
 export function CurrencySection({
@@ -15,10 +16,15 @@ export function CurrencySection({
   amount,
   balanceLabel,
   balanceAmount,
+  onCurrencyPress,
 }: CurrencySectionProps) {
   return (
     <View style={styles.section}>
-      <View style={styles.labelLeft}>
+      <TouchableOpacity 
+        style={styles.labelLeft} 
+        onPress={onCurrencyPress}
+        activeOpacity={0.7}
+      >
         <Image 
           source={currencyIcon} 
           style={styles.currencyIcon}
@@ -28,7 +34,7 @@ export function CurrencySection({
           source={require('../assets/images/expand-arrow.png')} 
           style={styles.expandArrow}
         />
-      </View>
+      </TouchableOpacity>
       <Text style={styles.amount}>{amount}</Text>
       {balanceLabel && balanceAmount && (
         <View style={styles.balanceRow}>

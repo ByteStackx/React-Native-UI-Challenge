@@ -1,22 +1,28 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 type HeaderProps = {
   title: string;
+  onBackPress?: () => void;
+  onNotificationPress?: () => void;
 };
 
-export function Header({ title }: HeaderProps) {
+export function Header({ title, onBackPress, onNotificationPress }: HeaderProps) {
   return (
     <View style={styles.headerRow}>
-      <Image 
-        source={require('../assets/images/back-icon.png')} 
-        style={styles.backIcon}
-      />
+      <TouchableOpacity onPress={onBackPress} activeOpacity={0.7}>
+        <Image 
+          source={require('../assets/images/back-icon.png')} 
+          style={styles.backIcon}
+        />
+      </TouchableOpacity>
       <Text style={styles.header}>{title}</Text>
-      <Image 
-        source={require('../assets/images/notification-bell.png')} 
-        style={styles.bellIcon}
-      />
+      <TouchableOpacity onPress={onNotificationPress} activeOpacity={0.7}>
+        <Image 
+          source={require('../assets/images/notification-bell.png')} 
+          style={styles.bellIcon}
+        />
+      </TouchableOpacity>
     </View>
   );
 }

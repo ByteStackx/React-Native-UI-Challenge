@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { CurrencySection } from './CurrencySection';
 
 type ExchangeCardProps = {
@@ -17,9 +17,18 @@ type ExchangeCardProps = {
     balanceLabel?: string;
     balanceAmount?: string;
   };
+  onFromCurrencyPress?: () => void;
+  onToCurrencyPress?: () => void;
+  onSwapPress?: () => void;
 };
 
-export function ExchangeCard({ fromCurrency, toCurrency }: ExchangeCardProps) {
+export function ExchangeCard({ 
+  fromCurrency, 
+  toCurrency, 
+  onFromCurrencyPress, 
+  onToCurrencyPress,
+  onSwapPress 
+}: ExchangeCardProps) {
   return (
     <View style={styles.card}>
       <CurrencySection
@@ -28,17 +37,22 @@ export function ExchangeCard({ fromCurrency, toCurrency }: ExchangeCardProps) {
         amount={fromCurrency.amount}
         balanceLabel={fromCurrency.balanceLabel}
         balanceAmount={fromCurrency.balanceAmount}
+        onCurrencyPress={onFromCurrencyPress}
       />
 
       {/* Divider with Exchange Arrows */}
       <View style={styles.dividerContainer}>
         <View style={styles.divider} />
-        <View style={styles.exchangeArrowsContainer}>
+        <TouchableOpacity 
+          style={styles.exchangeArrowsContainer}
+          onPress={onSwapPress}
+          activeOpacity={0.7}
+        >
           <Image 
             source={require('../assets/images/exchange-arrows.png')} 
             style={styles.exchangeArrows}
           />
-        </View>
+        </TouchableOpacity>
       </View>
 
       <CurrencySection
@@ -47,6 +61,7 @@ export function ExchangeCard({ fromCurrency, toCurrency }: ExchangeCardProps) {
         amount={toCurrency.amount}
         balanceLabel={toCurrency.balanceLabel}
         balanceAmount={toCurrency.balanceAmount}
+        onCurrencyPress={onToCurrencyPress}
       />
     </View>
   );
