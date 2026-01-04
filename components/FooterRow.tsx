@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     color: '#999',
   },
   rowValue: {
-    color: 'white',
+    color: '#bdbdbdff',
   },
 });
