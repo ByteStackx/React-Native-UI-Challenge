@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 type CurrencySectionProps = {
   currencyIcon: ImageSourcePropType;
@@ -35,7 +35,14 @@ export function CurrencySection({
           style={styles.expandArrow}
         />
       </TouchableOpacity>
-      <Text style={styles.amount}>{amount}</Text>
+      <TextInput
+        style={styles.amount}
+        value={amount}
+        onChangeText={() => {}}
+        keyboardType="numeric"
+        placeholder="0"
+        placeholderTextColor="#444"
+      />
       {balanceLabel && balanceAmount && (
         <View style={styles.balanceRow}>
           <Text style={styles.balance}>{balanceLabel}</Text>
