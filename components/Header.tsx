@@ -5,9 +5,10 @@ type HeaderProps = {
   title: string;
   onBackPress?: () => void;
   onNotificationPress?: () => void;
+  hasNotification?: boolean;
 };
 
-export function Header({ title, onBackPress, onNotificationPress }: HeaderProps) {
+export function Header({ title, onBackPress, onNotificationPress, hasNotification = true }: HeaderProps) {
   return (
     <View style={styles.headerRow}>
       <TouchableOpacity onPress={onBackPress} activeOpacity={0.7}>
@@ -22,6 +23,9 @@ export function Header({ title, onBackPress, onNotificationPress }: HeaderProps)
           source={require('../assets/images/notification-bell.png')} 
           style={styles.bellIcon}
         />
+        {hasNotification && (
+          <View style={styles.badge} />
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -48,4 +52,13 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  badge: {
+    position: 'absolute',
+    top: -2,
+    right: -2,
+    backgroundColor: '#fe716aff',
+    borderRadius: 4,
+    width: 8,
+    height: 8,
+  }
 });
