@@ -23,7 +23,7 @@ export function CurrencySection({
       <TouchableOpacity 
         style={styles.labelLeft} 
         onPress={onCurrencyPress}
-        activeOpacity={0.7}
+        activeOpacity={0.6}
       >
         <Image 
           source={currencyIcon} 

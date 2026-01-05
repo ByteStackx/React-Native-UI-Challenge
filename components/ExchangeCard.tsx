@@ -46,7 +46,7 @@ export function ExchangeCard({
         <TouchableOpacity 
           style={styles.exchangeArrowsContainer}
           onPress={onSwapPress}
-          activeOpacity={0.7}
+          activeOpacity={0.6}
         >
           <Image 
             source={require('../assets/images/exchange-arrows.png')} 

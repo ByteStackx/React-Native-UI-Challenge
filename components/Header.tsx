@@ -11,14 +11,14 @@ type HeaderProps = {
 export function Header({ title, onBackPress, onNotificationPress, hasNotification = true }: HeaderProps) {
   return (
     <View style={styles.headerRow}>
-      <TouchableOpacity onPress={onBackPress} activeOpacity={0.7}>
+      <TouchableOpacity onPress={onBackPress} activeOpacity={0.6}>
         <Image 
           source={require('../assets/images/back-icon.png')} 
           style={styles.backIcon}
         />
       </TouchableOpacity>
       <Text style={styles.header}>{title}</Text>
-      <TouchableOpacity onPress={onNotificationPress} activeOpacity={0.7}>
+      <TouchableOpacity onPress={onNotificationPress} activeOpacity={0.6}>
         <Image 
           source={require('../assets/images/notification-bell.png')} 
           style={styles.bellIcon}

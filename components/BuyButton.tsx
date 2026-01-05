@@ -8,7 +8,7 @@ type BuyButtonProps = {
 
 export function BuyButton({ onPress, text = 'Buy ETH' }: BuyButtonProps) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={styles.button} onPress={onPress} activeOpacity={0.8}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   );
